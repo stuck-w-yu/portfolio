@@ -4,7 +4,7 @@ import Contact from "../../components/Contact";
 export default function Home() {
   return (
     <>
-    <div className="pl-8">
+    <div>
         <Contact />
     </div>
     </>
