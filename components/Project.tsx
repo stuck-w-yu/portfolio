@@ -9,41 +9,11 @@ import { EyeIcon, CodeBracketIcon } from '@heroicons/react/24/outline';
 const projectsData = [
   {
     id: 1,
-    title: "E-Commerce Dashboard",
-    category: "Web Application",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    tech: ["Next.js", "Tailwind", "Prisma"],
-    description: "A comprehensive dashboard for managing products, orders, and analytics with real-time data visualization.",
-    demoLink: "#",
-    repoLink: "#"
-  },
-  {
-    id: 2,
-    title: "Crypto Portfolio Tracker",
-    category: "Fintech",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    tech: ["React", "Redux", "CoinGecko API"],
-    description: "Track your cryptocurrency assets in real-time with interactive charts and profit/loss calculation.",
-    demoLink: "#",
-    repoLink: "#"
-  },
-  {
-    id: 3,
-    title: "AI Image Generator",
-    category: "AI Tool",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    tech: ["OpenAI API", "Node.js", "MongoDB"],
-    description: "Generate unique images from text prompts using DALL-E integration with a custom gallery feed.",
-    demoLink: "#",
-    repoLink: "#"
-  },
-  {
-    id: 4,
-    title: "Travel Booking App",
-    category: "Mobile App",
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    tech: ["Flutter", "Firebase", "Google Maps"],
-    description: "Seamless flight and hotel booking experience with interactive maps and user reviews.",
+    title: "Photobooth Web",
+    category: "Website",
+    image: "/Project1.jpg",
+    tech: ["Next.js", "Tailwind","React"],
+    description: "Website for UPB 2025 art Exhibition",
     demoLink: "#",
     repoLink: "#"
   }
