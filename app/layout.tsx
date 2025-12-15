@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-[#121c24] text-stone-50">
-        <div className="fixed top-0 left-0 w-full z-50 bg-transparent">
+        <div className="absolute top-0 left-0 w-full z-50 bg-transparent">
         <Navbar />
         </div>
         {children}

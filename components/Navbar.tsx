@@ -33,7 +33,7 @@ export default function Navbar() {
       <div className="hidden md:block relative h-screen w-full overflow-hidden">
         
         {/* SVG Curve Background */}
-        <div className="absolute left-0 top-0 h-full w-[200px] pointer-events-none z-0">
+        <div className="absolute left-0 top-0 h-full w-[100px] pointer-events-none z-0">
           <svg className="h-full w-full" viewBox="0 0 100 800" preserveAspectRatio="none">
             <path 
               d="M 100 0 Q 30 400 100 800" 
@@ -112,7 +112,7 @@ export default function Navbar() {
             </div>
             
             {/* Desktop Content Placeholder */}
-            <div className="ml-20">
+            <div className="mx-auto my-auto ml-auto">
               {/* Content Goes Here */}
             </div>
           </div>

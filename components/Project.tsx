@@ -124,7 +124,7 @@ const ProjectCard = ({ project }: { project: typeof projectsData[0] }) => {
 // --- MAIN COMPONENT ---
 export default function Projects() {
   return (
-    <section className="bg-[#121c24] min-h-screen py-24 relative overflow-hidden font-sans">
+    <section className="bg-[#121c24] min-h-screen mx-auto py-20 relative overflow-hidden font-sans">
       
       {/* Decorative Background Elements (Fade In Background) */}
       <motion.div 
@@ -134,7 +134,7 @@ export default function Projects() {
         className="absolute top-20 right-0 w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-[100px] pointer-events-none"
       />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-10 pl-8">
         
         {/* --- HEADER (Fade In Left) --- */}
         <div className="mb-20">

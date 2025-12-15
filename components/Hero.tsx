@@ -120,10 +120,10 @@ const Hero = () => {
   const [isH2Done, setIsH2Done] = useState(false);
 
   return (
-    <section className="bg-[#121c24] text-slate-200 min-h-screen py-20 relative overflow-hidden font-sans">
+    <section className="bg-[#121c24] text-slate-200 min-h-screen py-8 mx-auto relative overflow-hidden font-sans">
       
       {/* Background Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-teal-900/20 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-teal-900/20 rounded-full blur-[120px] pointer-events-none pl-8"></div>
 
       <div className="container mx-auto px-6 relative z-10 h-full flex flex-col items-center justify-center">
 
