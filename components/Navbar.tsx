@@ -126,25 +126,25 @@ export default function Navbar() {
       <div className="block md:hidden fixed bottom-0 left-0 w-full z-50 h-24 pointer-events-none">
         
         {/* SVG Background Curve Horizontal */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none">
-          <svg className="w-full h-full" viewBox="0 0 400 100" preserveAspectRatio="none">
+        {/* <div className="absolute inset-0 w-full h-full pointer-events-none">
+          <svg className="w-full h-full" viewBox="0 0 400 100" preserveAspectRatio="none"> */}
              {/* Glow Line */}
-             <path 
+             {/* <path 
               d="M 0 20 Q 200 80 400 20" 
               fill="none" 
               stroke="rgba(20, 184, 166, 0.3)" 
               strokeWidth="4"
               className="blur-md"
-            />
+            /> */}
             {/* Main Line */}
-            <path 
+            {/* <path 
               d="M 0 20 Q 200 80 400 20" 
               fill="none" 
               stroke="rgba(255,255,255,0.2)" 
               strokeWidth="2"
             />
           </svg>
-        </div>
+        </div> */}
 
         {/* Button Container Mobile */}
         <div className="relative w-full h-full flex items-start justify-around px-6 pointer-events-auto">
@@ -171,7 +171,7 @@ export default function Navbar() {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="mt-8" 
+            className="mt-1" 
           >
             {/* FIX: href dan getLinkStyle disamakan menjadi '/projects' */}
             <Link href="/projects">

@@ -76,7 +76,7 @@ const InputField = ({ label, type, placeholder, textarea = false }: { label: str
 // --- MAIN COMPONENT ---
 export default function Contact() {
   return (
-    <section className="bg-[#121c24] min-h-screen py-8 relative overflow-hidden font-sans flex items-center">
+    <section className="bg-[#121c24] min-h-screen py-8 mb-20 relative overflow-hidden font-sans flex items-center">
       
       {/* Background Glow Elements */}
       {/* Note: Tailwind warning about canonical classes (w-[500px]) is fine, it's just a suggestion */}
