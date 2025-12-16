@@ -1,107 +1,111 @@
 'use client'
 
-import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from '@/components/ui/chart'
+import { useEffect, useState, useRef } from 'react'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts'
 
-// Konfigurasi Warna
-const chartConfig = {
-  desktop: {
-    label: 'Activity',
-    color: 'rgb(20, 184, 166)', // Warna Teal (sesuai tema Anda)
-  },
-} satisfies ChartConfig
+// 1. Definisikan tipe data untuk item pola
+interface HeartbeatData {
+  step: number;
+  value: number;
+  label?: string;
+}
 
-// Data Pola Detak Jantung
-// value: 50 (datar), 100 (puncak atas), 0 (puncak bawah)
-// label: Teks yang akan muncul di titik tersebut
-const chartData = [
-  { step: 1, value: 50 },
-  { step: 2, value: 50 },
-  { step: 3, value: 50 },
-  { step: 4, value: 80, label: "1 YEAR EXP" }, // Puncak 1
-  { step: 5, value: 50 },
-  { step: 6, value: 20 }, // Lembah
-  { step: 7, value: 90, label: "5 PROJECTS", isMain: true }, // Puncak Utama
-  { step: 8, value: 30 },
-  { step: 9, value: 50 },
-  { step: 10, value: 70, label: "5 LANGUAGES" }, // Puncak 3
-  { step: 11, value: 50 },
-  { step: 12, value: 50 },
+// Data pola heartbeat dasar
+const basePattern: HeartbeatData[] = [
+  { step: 1, value: 0 },
+  { step: 2, value: 0 },
+  { step: 3, value: 50, label: '3 YEAR EXPERIENCE' },
+  { step: 4, value: 0 },
+  { step: 5, value: 20 },
+  { step: 6, value: 40, label: '5 PROJECT' },
+  { step: 7, value: 0 },
+  { step: 8, value: 0 },
+  { step: 9, value: 60, label: '2 LANGUAGE' },
+  { step: 10, value: 0 },
+  { step: 11, value: 0 },
 ]
 
-// Komponen Custom untuk Render Titik & Label
-const CustomizedDot = (props: any) => {
-  const { cx, cy, payload } = props;
+// Ulangi data untuk animasi loop
+const repeatedData = [...basePattern, ...basePattern, ...basePattern].map((item, i) => ({
+  ...item,
+  step: i + 1,
+}))
 
-  // Hanya render jika ada label di data
-  if (payload.label) {
+const VIEWPORT_WIDTH = 11
+
+// 2. Definisikan props untuk CustomDot
+// Tanda tanya (?) membuat props bersifat opsional, ini penting untuk menghindari error saat render di <Line />
+interface CustomDotProps {
+  cx?: number;
+  cy?: number;
+  payload?: HeartbeatData;
+}
+
+export default function HeartBeatChart() {
+  const [offset, setOffset] = useState(0)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
+
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setOffset((prev) => (prev + 1) % basePattern.length)
+    }, 120)
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+    }
+  }, [])
+
+  const visibleData = repeatedData.slice(offset, offset + VIEWPORT_WIDTH)
+
+  // 3. Terapkan interface CustomDotProps di sini
+  const CustomDot = ({ cx, cy, payload }: CustomDotProps) => {
+    // Pastikan cx dan cy ada sebelum render (safety check)
+    if (cx === undefined || cy === undefined || !payload?.label) return null;
+
     return (
       <g>
-        {/* Lingkaran Putih dengan efek Glow */}
-        <circle 
-          cx={cx} 
-          cy={cy} 
-          r={payload.isMain ? 8 : 6} 
-          fill="white" 
-          stroke="rgba(20, 184, 166, 0.5)" 
-          strokeWidth={4}
-        />
-        {/* Teks Label di atas titik */}
-        <text 
-          x={cx} 
-          y={cy - 20} 
-          textAnchor="middle" 
-          fill="white" 
-          fontSize={payload.isMain ? 14 : 12} 
-          className="font-sans tracking-wider font-bold"
+        {/* Titik kecil putih */}
+        <circle cx={cx} cy={cy} r="3" fill="white" />
+        {/* Label di atas titik */}
+        <text
+          x={cx}
+          y={cy - 10}
+          textAnchor="middle"
+          fill="white"
+          fontSize="10"
+          className="font-sans tracking-wide font-medium"
         >
           {payload.label}
         </text>
       </g>
-    );
+    )
   }
-  return null;
-};
 
-export default function HeartbeatChart() {
   return (
-    <div className="w-full h-full min-h-[200px]">
-      <ChartContainer config={chartConfig} className="w-full h-full">
+    <div className="w-full h-[200px] bg-[#0f0c1a] rounded-lg p-4">
+      <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          data={chartData}
-          margin={{
-            left: 20,
-            right: 20,
-            top: 40, // Margin atas diperbesar agar teks label tidak terpotong
-            bottom: 20,
-          }}
+          data={visibleData}
+          margin={{ top: 20, right: 10, left: 10, bottom: 10 }}
         >
-          {/* Grid Tipis Transparan */}
-          <CartesianGrid vertical={false} stroke="rgba(255,255,255,0.05)" />
-          
-          {/* Sembunyikan Axis X dan Y agar bersih */}
-          <XAxis dataKey="step" hide />
-          <YAxis domain={[0, 120]} hide />
-
-          <ChartTooltip
-            cursor={false}
-            content={<ChartTooltipContent hideLabel />}
+          <CartesianGrid
+            vertical={false}
+            stroke="rgba(255,255,255,0.1)"
+            strokeWidth={0.5}
           />
-          
+          <XAxis dataKey="step" hide />
+          <YAxis domain={[0, 70]} hide />
           <Line
+            type="linear"
             dataKey="value"
-            type="monotone" // Membuat garis melengkung halus
-            stroke="rgb(20, 184, 166)" // Warna Teal Hardcoded
-            strokeWidth={2}
-            dot={<CustomizedDot />} // Gunakan dot custom kita
+            stroke="white"
+            strokeWidth={1.5}
+            // TypeScript sekarang senang karena <CustomDot /> valid (props opsional)
+            dot={<CustomDot />}
+            isAnimationActive={false}
           />
         </LineChart>
-      </ChartContainer>
+      </ResponsiveContainer>
     </div>
   )
 }
