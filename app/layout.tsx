@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Wahyu Firmansyah's Portfolio",
+  title: "Wahyu Firmansyah | Front-End Developer",
+  description: "University of Putera Batam's Student majoring at Informatics Engineering, Specialize at Front-End  Development",
 };
 
 export default function RootLayout({
