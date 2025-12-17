@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import TextType from './TextType';
+import { Button } from "@/components/ui/moving-border";
+
 // Jika HeartbeatChart tidak dipakai, komentar atau hapus
 // import HeartbeatChart from './HeartbeatChart';
 
@@ -106,6 +108,7 @@ const Hero = () => {
             <TextType
               text={content.Heading1}
               loop={false}
+              showCursor={false}
               className="text-4xl md:text-6xl font-bold text-amber-50"
               onSentenceComplete={(sentence: any, index: number) => {
                 if (index === content.Heading1.length - 1) setIsH1Done(true);
@@ -133,15 +136,22 @@ const Hero = () => {
               Hi there! I'm an Informatics Engineering student at Universitas Putera Batam. I specialize in Front-End Development and love crafting beautiful, responsive websites. I'm always eager to learn new technologies and turn creative ideas into reality through code.
             </p>
           </div>
-
           <div className="md:w-1/2 flex flex-col items-center justify-center order-1 md:order-2 relative">
             <div className="relative w-56 h-56 mb-8 group">
-              <div className="absolute inset-0 bg-gradient-to-b from-slate-600 to-teal-900 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
+              <Button
+                as="div" 
+                duration={4000}
+                borderRadius="8rem"
+                className="flex-1 text-white dark:text-white border-neutral-700 dark:border-slate-800 bg-black"
+              >
+
               <img
                 src="/profile.jpg"
                 alt="Profile"
                 className="rounded-full w-full h-full object-cover relative z-10 border-[3px] border-slate-700/50 grayscale hover:grayscale-0 transition-all duration-500"
-              />
+                />
+                
+              </Button>
             </div>
           </div>
         </div>

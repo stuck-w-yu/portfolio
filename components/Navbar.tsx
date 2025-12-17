@@ -34,17 +34,41 @@ export default function Navbar() {
         
         {/* SVG Curve Background (Left) */}
         <div className="absolute left-0 top-0 h-full w-[150px] pointer-events-none z-0">
-          <svg className="h-full w-full" viewBox="0 0 100 800" preserveAspectRatio="none">
-            <path d="M 100 0 Q 30 400 100 800" fill="none" stroke="rgba(20, 184, 166, 0.3)" strokeWidth="4" className="blur-md"/>
-            <path d="M 100 0 Q 30 400 100 800" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="2"/>
+          <svg className="ml-22 h-full w-full" viewBox="0 0 100 800" preserveAspectRatio="none">
+            {/* Ubah Q 30 menjadi Q -100 */}
+            <path 
+              d="M 100 0 Q -100 400 100 800" 
+              fill="none" 
+              stroke="rgba(20, 184, 166, 0.3)" 
+              strokeWidth="4" 
+              className="blur-md"
+            />
+            <path 
+              d="M 100 0 Q -100 400 100 800" 
+              fill="none" 
+              stroke="rgba(255,255,255,0.2)" 
+              strokeWidth="2"
+            />
           </svg>
         </div>
 
         {/* SVG Curve Background (Right - Mirrored) */}
-        <div className="absolute right-0 top-0 h-full w-[150px] pointer-events-none z-0 scale-x-[-1]">
-          <svg className="h-full w-full" viewBox="0 0 100 800" preserveAspectRatio="none">
-            <path d="M 100 0 Q 30 400 100 800" fill="none" stroke="rgba(20, 184, 166, 0.3)" strokeWidth="4" className="blur-md"/>
-            <path d="M 100 0 Q 30 400 100 800" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="2"/>
+       <div className="absolute right-0 top-0 h-full w-[150px] pointer-events-none z-0 scale-x-[-1]">
+          <svg className="ml-23 h-full w-full" viewBox="0 0 100 800" preserveAspectRatio="none">
+            {/* Ubah Q 30 menjadi Q -100 */}
+            <path 
+              d="M 100 0 Q -100 400 100 800" 
+              fill="none" 
+              stroke="rgba(20, 184, 166, 0.3)" 
+              strokeWidth="4" 
+              className="blur-md"
+            />
+            <path 
+              d="M 100 0 Q -100 400 100 800" 
+              fill="none" 
+              stroke="rgba(255,255,255,0.2)" 
+              strokeWidth="2"
+            />
           </svg>
         </div>
 

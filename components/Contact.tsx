@@ -77,8 +77,8 @@ const InputField = ({ label, type, placeholder, textarea = false }: { label: str
 export default function Contact() {
   return (
     <section className="bg-[#121c24] min-h-screen py-8 mb-20 relative overflow-hidden font-sans flex items-center">
-      
-      {/* Background Glow Elements */}
+
+            {/* Background Glow Elements */}
       {/* Note: Tailwind warning about canonical classes (w-[500px]) is fine, it's just a suggestion */}
       <div className="absolute pl-8 top-0 left-0 w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none translate-x-1/2 translate-y-1/2"></div>
@@ -189,7 +189,6 @@ export default function Contact() {
               <InputField label="Subject" type="text" placeholder="Project Discussion" />
               
               <InputField label="Message" placeholder="Tell me about your project..." textarea />
-
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
