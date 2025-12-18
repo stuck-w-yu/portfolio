@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import TextType from './TextType';
 import { Button } from "@/components/ui/moving-border";
+import ExperienceChart from './ExperienceChart';
 
 // Jika HeartbeatChart tidak dipakai, komentar atau hapus
 // import HeartbeatChart from './HeartbeatChart';
@@ -167,8 +168,7 @@ const Hero = () => {
             ))}
           </div>
         </div>
-
-        {/* <HeartbeatChart /> */}
+        <ExperienceChart/>     
       </div>
     </section>
   );
