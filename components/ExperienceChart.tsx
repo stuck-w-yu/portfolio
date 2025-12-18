@@ -39,7 +39,7 @@ export default function ExperienceChart() {
           <Area 
             type="linear" 
             dataKey="level" 
-            stroke="#16a34a" 
+            stroke="#0ea5e9" 
             strokeWidth={2}
             fillOpacity={1} 
             fill="url(#colorLevel)" 
