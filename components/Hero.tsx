@@ -89,7 +89,7 @@ const Hero = () => {
   const [step, setStep] = useState(0);
 
   return (
-    <section className="bg-[#121c24] text-slate-200 min-h-screen py-8 mx-auto relative overflow-hidden font-sans">
+    <section className="bg-[#121c24] text-slate-200 min-h-screen w-full py-8 mx-auto relative overflow-hidden font-sans">
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-teal-900/20 rounded-full blur-[120px] pointer-events-none"></div>
 
