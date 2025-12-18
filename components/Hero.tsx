@@ -140,7 +140,7 @@ const Hero = () => {
                 as="div" 
                 duration={4000}
                 borderRadius="9999px" // Set max radius agar bulat
-                className="w-full h-full rounded-full bg-black border-neutral-700 dark:border-slate-800 p-1" // p-1 memberikan gap sedikit
+                className="w-full h-full rounded-full bg-black border-neutral-700 dark:border-slate-800 " // p-1 memberikan gap sedikit
               >
                 <div className="w-full h-full rounded-full overflow-hidden">
                    <img
