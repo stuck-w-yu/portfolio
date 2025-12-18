@@ -69,7 +69,6 @@ const Hero = () => {
     { name: 'HTML', sub: 'Advanced' },
     { name: 'CSS', sub: 'Advanced' },
     { name: 'JS', sub: 'Advanced' },
-    { name: 'LARAVEL', sub: 'Intermediate' },
     { name: 'NODE.JS', sub: 'Intermediate' },
     { name: 'PYTHON', sub: 'Intermediate' },
     { name: 'SQL', sub: 'Intermediate' },
