@@ -44,7 +44,8 @@ export async function createProject(formData: FormData) {
         return { success: true, message: "Project created successfully" };
     } catch (error) {
         console.error("Failed to create project:", error);
-        return { success: false, message: "Failed to create project" };
+        const errorMessage = error instanceof Error ? error.message : "Unknown error";
+        return { success: false, message: "Failed to create project: " + errorMessage };
     }
 }
 
@@ -59,7 +60,8 @@ export async function deleteProject(id: number) {
         return { success: true, message: "Project deleted successfully" };
     } catch (error) {
         console.error("Failed to delete project:", error);
-        return { success: false, message: "Failed to delete project" };
+        const errorMessage = error instanceof Error ? error.message : "Unknown error";
+        return { success: false, message: "Failed to delete project: " + errorMessage };
     }
 }
 
