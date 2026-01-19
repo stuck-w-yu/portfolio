@@ -7,9 +7,14 @@ import { redirect } from 'next/navigation';
 
 
 export async function getProjects() {
-    return await prisma.project.findMany({
-        orderBy: { createdAt: 'desc' },
-    });
+    try {
+        return await prisma.project.findMany({
+            orderBy: { createdAt: 'desc' },
+        });
+    } catch (error) {
+        console.error("Failed to fetch projects:", error);
+        return [];
+    }
 }
 
 export async function createProject(formData: FormData) {
@@ -19,28 +24,43 @@ export async function createProject(formData: FormData) {
     const techStack = formData.get('techStack') as string;
     const imageUrl = formData.get('imageUrl') as string;
 
-    await prisma.project.create({
-        data: {
-            title,
-            description,
-            category,
-            techStack,
-            imageUrl,
-        },
-    });
+    if (!title || !description || !category || !techStack || !imageUrl) {
+        return { success: false, message: "All fields are required" };
+    }
 
-    revalidatePath('/');
-    revalidatePath('/admin');
+    try {
+        await prisma.project.create({
+            data: {
+                title,
+                description,
+                category,
+                techStack,
+                imageUrl,
+            },
+        });
+
+        revalidatePath('/');
+        revalidatePath('/admin');
+        return { success: true, message: "Project created successfully" };
+    } catch (error) {
+        console.error("Failed to create project:", error);
+        return { success: false, message: "Failed to create project" };
+    }
 }
 
 export async function deleteProject(id: number) {
-    // Optional: Delete image file as well if needed
-    await prisma.project.delete({
-        where: { id },
-    });
+    try {
+        await prisma.project.delete({
+            where: { id },
+        });
 
-    revalidatePath('/');
-    revalidatePath('/admin');
+        revalidatePath('/');
+        revalidatePath('/admin');
+        return { success: true, message: "Project deleted successfully" };
+    } catch (error) {
+        console.error("Failed to delete project:", error);
+        return { success: false, message: "Failed to delete project" };
+    }
 }
 
 export async function login(prevState: unknown, formData: FormData) {

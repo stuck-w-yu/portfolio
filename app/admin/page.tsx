@@ -25,19 +25,28 @@ export default function AdminPage() {
         const formData = new FormData(event.currentTarget);
 
         startTransition(async () => {
-            await createProject(formData);
-            const updated = await getProjects();
-            setProjects(updated);
-            (event.target as HTMLFormElement).reset();
+            const result = await createProject(formData);
+            if (result.success) {
+                const updated = await getProjects();
+                setProjects(updated);
+                (event.target as HTMLFormElement).reset();
+                alert(result.message);
+            } else {
+                alert(result.message);
+            }
         });
     }
 
     async function handleDelete(id: number) {
         if (!confirm("Are you sure?")) return;
         startTransition(async () => {
-            await deleteProject(id);
-            const updated = await getProjects();
-            setProjects(updated);
+            const result = await deleteProject(id);
+            if (result.success) {
+                const updated = await getProjects();
+                setProjects(updated);
+            } else {
+                alert(result.message);
+            }
         });
     }
 
