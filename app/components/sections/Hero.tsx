@@ -30,7 +30,7 @@ export default function Hero() {
                             transition={{ delay: 0.2, duration: 0.8 }}
                             className="text-6xl md:text-9xl font-display font-bold text-core-white leading-none tracking-tighter mix-blend-difference z-20 relative"
                         >
-                            WAHYU
+                            WAHYU FIRMANSYAH
                             <br />
                             <span className="text-stroke-blue md:ml-24 block">FIRMANSYAH</span>
                         </motion.h1>

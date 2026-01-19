@@ -72,7 +72,7 @@ export default function Home() {
       {/* Background Title */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
         <h1 className="text-[15vw] leading-none font-bold text-[#6B7D5D]">
-          PORTFOLIO
+          WAHYU FIRMANSYAH
         </h1>
       </div>
 
