@@ -1,0 +1,89 @@
+'use server';
+
+import { prisma } from '@/lib/prisma';
+import { revalidatePath } from 'next/cache';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
+export async function getProjects() {
+    return await prisma.project.findMany({
+        orderBy: { createdAt: 'desc' },
+    });
+}
+
+export async function createProject(formData: FormData) {
+    const title = formData.get('title') as string;
+    const description = formData.get('description') as string;
+    const category = formData.get('category') as string;
+    const techStack = formData.get('techStack') as string;
+    const image = formData.get('image') as File;
+
+    let imageUrl = '';
+
+    if (image && image.size > 0) {
+        const buffer = Buffer.from(await image.arrayBuffer());
+        const fileName = `${Date.now()}-${image.name}`;
+        const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+
+        // Ensure upload directory exists
+        try {
+            await fs.access(uploadDir);
+        } catch {
+            await fs.mkdir(uploadDir, { recursive: true });
+        }
+
+        const filePath = path.join(uploadDir, fileName);
+        await fs.writeFile(filePath, buffer);
+        imageUrl = `/uploads/${fileName}`;
+    }
+
+    await prisma.project.create({
+        data: {
+            title,
+            description,
+            category,
+            techStack,
+            imageUrl,
+        },
+    });
+
+    revalidatePath('/');
+    revalidatePath('/admin');
+}
+
+export async function deleteProject(id: number) {
+    // Optional: Delete image file as well if needed
+    await prisma.project.delete({
+        where: { id },
+    });
+
+    revalidatePath('/');
+    revalidatePath('/admin');
+}
+
+export async function login(prevState: any, formData: FormData) {
+    const username = formData.get('username') as string;
+    const password = formData.get('password') as string;
+
+    console.log("Login attempt:", username); // Debug log
+
+    if (username === 'stuckwyu' && password === '@portfoliowahyu28') {
+        const cookieStore = await cookies();
+        cookieStore.set('admin_session', 'true', {
+            httpOnly: true,
+            secure: false, // Forcing false for development debugging
+            maxAge: 60 * 60 * 24 * 7, // 1 week
+            path: '/',
+        });
+        redirect('/admin');
+    } else {
+        return { error: 'Invalid credentials' };
+    }
+}
+
+export async function logout() {
+    (await cookies()).delete('admin_session');
+    redirect('/login');
+}

@@ -1,21 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { VT323 } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const vt323 = VT323({
+  weight: "400",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-vt323",
 });
 
 export const metadata: Metadata = {
-  title: "Wahyu Firmansyah | Front-End Developer",
-  description: "University of Putera Batam's Student majoring at Informatics Engineering, Specialize at Front-End  Development",
+  title: "Retro Portfolio",
+  description: "A retro desktop themed portfolio",
 };
 
 export default function RootLayout({
@@ -25,10 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-[#121c24]">
-        <div className="fixed top-0 left-0 w-full z-50 bg-transparent">
-        <Navbar />    
-        </div>
+      <body className={`${vt323.variable} font-[family-name:var(--font-vt323)] antialiased`}>
         {children}
       </body>
     </html>
