@@ -69,8 +69,8 @@ export default function AdminPage() {
                             </div>
                         </div>
                         <div>
-                            <label className="block text-sm font-medium mb-1">Image Preview</label>
-                            <input type="file" name="image" required accept="image/*" className="w-full p-2 border rounded" />
+                            <label className="block text-sm font-medium mb-1">Image URL</label>
+                            <input type="url" name="imageUrl" required className="w-full p-2 border rounded" placeholder="https://example.com/image.png" />
                         </div>
                         <button
                             disabled={isPending}

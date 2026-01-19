@@ -4,8 +4,7 @@ import { prisma } from '@/lib/prisma';
 import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import fs from 'node:fs/promises';
-import path from 'node:path';
+
 
 export async function getProjects() {
     return await prisma.project.findMany({
@@ -18,26 +17,7 @@ export async function createProject(formData: FormData) {
     const description = formData.get('description') as string;
     const category = formData.get('category') as string;
     const techStack = formData.get('techStack') as string;
-    const image = formData.get('image') as File;
-
-    let imageUrl = '';
-
-    if (image && image.size > 0) {
-        const buffer = Buffer.from(await image.arrayBuffer());
-        const fileName = `${Date.now()}-${image.name}`;
-        const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-
-        // Ensure upload directory exists
-        try {
-            await fs.access(uploadDir);
-        } catch {
-            await fs.mkdir(uploadDir, { recursive: true });
-        }
-
-        const filePath = path.join(uploadDir, fileName);
-        await fs.writeFile(filePath, buffer);
-        imageUrl = `/uploads/${fileName}`;
-    }
+    const imageUrl = formData.get('imageUrl') as string;
 
     await prisma.project.create({
         data: {
