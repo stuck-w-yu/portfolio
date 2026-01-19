@@ -30,7 +30,6 @@ export default function Window({
     height = "auto",
 }: WindowProps) {
     const dragControls = useDragControls();
-    const constraintsRef = useRef(null);
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -42,15 +41,7 @@ export default function Window({
 
     if (!isOpen) return null;
 
-    const mobileStyle = {
-        position: "fixed" as const,
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        width: "90%",
-        maxHeight: "80vh",
-        margin: 0,
-    };
+
 
     const desktopStyle = {
         position: "absolute" as const,
@@ -63,6 +54,7 @@ export default function Window({
 
     return (
         <motion.div
+            id={id}
             drag={!isMobile}
             dragControls={dragControls}
             dragMomentum={false}

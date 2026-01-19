@@ -16,7 +16,7 @@ export default function Contact() {
                         READY TO <span className="text-accent-blue">COLLABORATE?</span>
                     </h2>
                     <p className="text-core-silver text-lg mb-12 font-light">
-                        Let's build the future provided by web technologies.
+                        Let&apos;s build the future provided by web technologies.
                     </p>
 
                     <form className="space-y-6 text-left">

@@ -1,0 +1,24 @@
+﻿
+> firstweb@0.1.0 lint
+> eslint
+
+
+D:\New folder\Yu\code\portfolio-fix\app\admin\page.tsx
+  90:37  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\New folder\Yu\code\portfolio-fix\app\components\Taskbar.tsx
+  4:8  warning  'Link' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\New folder\Yu\code\portfolio-fix\app\components\Window.tsx
+  21:5   warning  'id' is defined but never used                       @typescript-eslint/no-unused-vars
+  33:11  warning  'constraintsRef' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  45:11  warning  'mobileStyle' is assigned a value but never used     @typescript-eslint/no-unused-vars
+
+D:\New folder\Yu\code\portfolio-fix\app\login\page.tsx
+  13:5  error  Include a description after the "@ts-expect-error" directive to explain why the @ts-expect-error is necessary. The description must be 3 characters or longer  @typescript-eslint/ban-ts-comment
+
+D:\New folder\Yu\code\portfolio-fix\app\page.tsx
+  8:16  warning  'Briefcase' is defined but never used  @typescript-eslint/no-unused-vars
+
+Γ£û 7 problems (1 error, 6 warnings)
+

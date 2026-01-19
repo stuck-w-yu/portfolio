@@ -5,7 +5,7 @@ import Image from "next/image";
 import DesktopIcon from "./components/DesktopIcon";
 import Window from "./components/Window";
 import Taskbar from "./components/Taskbar";
-import { User, Briefcase, Mail, FileText, Code2, Globe, Palette, Terminal, Database, Sparkles, FolderOpen } from "lucide-react";
+import { User, Mail, FileText, Code2, Globe, Palette, Terminal, Database, Sparkles, FolderOpen } from "lucide-react";
 import { getProjects } from "./actions";
 
 export default function Home() {
@@ -17,7 +17,16 @@ export default function Home() {
     resume: { isOpen: false, zIndex: 0, position: { x: 600, y: 250 }, title: "C:\\User\\Resume" },
   });
 
-  const [projects, setProjects] = useState<any[]>([]);
+  interface Project {
+    id: number;
+    title: string;
+    description: string;
+    category: string;
+    techStack: string;
+    imageUrl: string | null;
+  }
+
+  const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
     getProjects().then(setProjects);
@@ -131,12 +140,12 @@ export default function Home() {
             />
           </div>
           <div className="text-center md:text-left">
-            <h2 className="text-4xl font-bold mb-2">hi! i'm <span className="text-[#D97757]">Wahyu</span></h2>
+            <h2 className="text-4xl font-bold mb-2">hi! i&apos;m <span className="text-[#D97757]">Wahyu</span></h2>
             <div className="inline-block bg-[#F4E06D] px-3 py-1 border-2 border-[var(--window-border)] mb-4 shadow-[4px_4px_0px_rgba(0,0,0,0.1)]">
               <p className="text-xl font-bold uppercase tracking-widest text-[#2D2D2D]">Frontend Developer</p>
             </div>
             <p className="italic text-gray-600 text-lg leading-relaxed">
-              "Building responsive, high-performance web applications with a focus on clean code and seamless user interactions."
+              &quot;Building responsive, high-performance web applications with a focus on clean code and seamless user interactions.&quot;
             </p>
           </div>
         </div>

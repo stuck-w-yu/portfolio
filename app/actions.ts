@@ -63,7 +63,7 @@ export async function deleteProject(id: number) {
     revalidatePath('/admin');
 }
 
-export async function login(prevState: any, formData: FormData) {
+export async function login(prevState: unknown, formData: FormData) {
     const username = formData.get('username') as string;
     const password = formData.get('password') as string;
 

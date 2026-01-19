@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { Github, Linkedin, Dribbble, Twitter } from "lucide-react";
 
 export default function Taskbar() {

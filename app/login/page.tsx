@@ -10,7 +10,7 @@ import { useEffect } from "react";
 const initialState = { error: "" };
 
 export default function LoginPage() {
-    // @ts-ignore
+
     const [state, formAction, isPending] = useActionState(login, initialState);
 
     useEffect(() => {

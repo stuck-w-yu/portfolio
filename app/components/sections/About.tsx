@@ -15,7 +15,7 @@ export default function About() {
                 >
                     <h2 className="text-accent-blue font-bold tracking-widest text-sm mb-8 uppercase">Introduction</h2>
                     <p className="text-2xl md:text-4xl text-core-white leading-relaxed font-light">
-                        I am <strong className="text-white font-bold">Wahyu Firmansyah</strong>. A <span className="text-stroke-blue">Frontend Developer</span> obsessed with performance and interaction. I don't just build websites; I engineer digital environments.
+                        I am <strong className="text-white font-bold">Wahyu Firmansyah</strong>. A <span className="text-stroke-blue">Frontend Developer</span> obsessed with performance and interaction. I don&apos;t just build websites; I engineer digital environments.
                     </p>
                 </motion.div>
             </div>

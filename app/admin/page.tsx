@@ -2,10 +2,19 @@
 
 import { useTransition, useState, useEffect } from "react";
 import { createProject, deleteProject, getProjects } from "../actions";
+import Image from "next/image";
 
 export default function AdminPage() {
     const [isPending, startTransition] = useTransition();
-    const [projects, setProjects] = useState<any[]>([]);
+    interface Project {
+        id: number;
+        title: string;
+        description: string;
+        category: string;
+        techStack: string;
+        imageUrl: string | null;
+    }
+    const [projects, setProjects] = useState<Project[]>([]);
 
     useEffect(() => {
         getProjects().then(setProjects);
@@ -79,7 +88,9 @@ export default function AdminPage() {
                         {projects.map((p) => (
                             <div key={p.id} className="flex items-start gap-4 p-4 border rounded hover:bg-gray-50">
                                 {p.imageUrl && (
-                                    <img src={p.imageUrl} alt={p.title} className="w-24 h-24 object-cover rounded bg-gray-200" />
+                                    <div className="relative w-24 h-24 rounded bg-gray-200 overflow-hidden">
+                                        <Image src={p.imageUrl} alt={p.title} fill className="object-cover" />
+                                    </div>
                                 )}
                                 <div className="flex-1">
                                     <h3 className="font-bold">{p.title}</h3>
