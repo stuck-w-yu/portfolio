@@ -18,7 +18,7 @@ export default function DesktopIcon({ label, onClick, icon }: DesktopIconProps) 
         {icon ? (
           icon
         ) : (
-          // Default Folder Icon (Retro SVG)
+          //  Default Folder Icon (Retro SVG)
           <svg
             viewBox="0 0 24 24"
             fill="currentColor"
